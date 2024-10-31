@@ -3,12 +3,20 @@ name: Build version release
 on:
   workflow_call:
     inputs:
+      additional-project-paths:
+        required: false
+        type: string
+        default: '[]'
       project-path:
         required: true
         type: string
       game-version:
         required: true
         type: string
+      additional-sources:
+        required: false
+        type: string
+        default: '{}'
 
 jobs:
   build_version_release:
@@ -35,6 +43,8 @@ jobs:
         game-version: ${{ inputs.game-version }}
         project-path: ${{ inputs.project-path }}
         project-configuration: Release-${{ inputs.game-version }}
+        additional-project-paths: ${{ inputs.additional-project-paths }}
+        additional-sources: ${{ inputs.additional-sources }}
 
     - name: Build
       id: build
