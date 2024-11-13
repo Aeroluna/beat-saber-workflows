@@ -1,4 +1,4 @@
-name: Build version release
+name: Build release
 
 on:
   workflow_call:
@@ -19,7 +19,7 @@ on:
         default: '{}'
 
 jobs:
-  build_version_release:
+  build_release:
     runs-on: windows-latest
     steps:
     - name: Checkout
